@@ -1,5 +1,7 @@
 ﻿Clear-Host
 
+Import-Module "PSPublishModule" -Force -RequiredVersion '2.0.26'
+
 Invoke-ModuleBuild -ModuleName 'Graphimo' {
     # Usual defaults as per standard module
     $Manifest = @{
