@@ -14,13 +14,14 @@
         PSData = @{
             ExternalModuleDependencies = @('Microsoft.PowerShell.Utility', 'Microsoft.PowerShell.Security')
             ProjectUri                 = 'https://github.com/EvotecIT/Graphimo'
+            RequireLicenseAcceptance   = $false
             Tags                       = @('Windows', 'MacOS', 'Linux', 'Office365', 'Graph', 'Azure')
         }
     }
     RequiredModules      = @(@{
             Guid          = 'ee272aa8-baaa-4edf-9f45-b6d6f7d844fe'
             ModuleName    = 'PSSharedGoods'
-            ModuleVersion = '0.0.308'
+            ModuleVersion = '0.0.312'
         }, 'Microsoft.PowerShell.Utility', 'Microsoft.PowerShell.Security')
     RootModule           = 'Graphimo.psm1'
 }

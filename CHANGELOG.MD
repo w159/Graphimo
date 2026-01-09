@@ -1,4 +1,10 @@
-﻿### 0.2.1 - 2024.07.11
+## Unreleased
+- Add DebugRequest switch to Get-GraphUser to log request details (select/filter/baseUri)
+
+## Unreleased
+- Use Graph beta when requesting onPremisesExtensionAttributes (needed for some guest/extensionAttribute reads)
+
+### 0.2.1 - 2024.07.11
 - Improve `Connect-MgGraph` support
 
 ### 0.2.0 - 2024.07.05
@@ -29,3 +35,4 @@
 
 ### 0.0.13 - 2022.07.27
 - Renamed Invoke-Graph to Invoke-Grapimo and Connect-Graph to Connect-Graphimo to not collide with Microsoft Graph module
+

@@ -22,6 +22,7 @@
         [string] $CountVariable,
         [string] $ConsistencyLevel,
 
+        [switch] $DebugRequest,
         [switch] $MgGraph
     )
 
@@ -30,7 +31,7 @@
         return
     }
 
-    if ($Property -contains 'EmployeeType') {
+    if ($Property -contains 'EmployeeType' -or $Property -contains 'onPremisesExtensionAttributes') {
         $BaseURI = 'https://graph.microsoft.com/beta'
     } else {
         $BaseURI = 'https://graph.microsoft.com/v1.0'
@@ -85,6 +86,10 @@
     # }
 
     Remove-EmptyValue -Hashtable $QueryParameter
+
+    if ($DebugRequest) {
+        Write-Verbose ("Get-GraphUser request: BaseUri={0} Uri={1} Select={2} Filter={3} Expand={4} OrderBy={5} Count={6} ConsistencyLevel={7}" -f $BaseURI, $RelativeURI, $QueryParameter['$Select'], $QueryParameter['$filter'], $QueryParameter['$expand'], $QueryParameter['$orderby'], $QueryParameter['$count'], $ConsistencyLevel)
+    }
 
     $invokeGraphimoSplat = @{
         Uri              = $RelativeURI
