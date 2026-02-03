@@ -25,9 +25,20 @@
             $Object = $_
             foreach ($Property in $Object.PSObject.Properties.Name) {
                 if ($Property -eq 'onPremisesExtensionAttributes') {
-                    foreach ($ExtensionAttribute in $Object.onPremisesExtensionAttributes.PSObject.Properties.Name) {
-                        $NewObject[$ExtensionAttribute] = $Object.onPremisesExtensionAttributes.$ExtensionAttribute
+                    $OnPrem = $Object.onPremisesExtensionAttributes
+                    if ($null -ne $OnPrem) {
+                        if ($OnPrem -is [System.Collections.IDictionary]) {
+                            foreach ($Key in $OnPrem.Keys) {
+                                $NewObject[$Key] = $OnPrem[$Key]
+                            }
+                        } else {
+                            foreach ($ExtensionAttribute in $OnPrem.PSObject.Properties.Name) {
+                                $NewObject[$ExtensionAttribute] = $OnPrem.$ExtensionAttribute
+                            }
+                        }
                     }
+                    # keep the raw object for debugging/inspection
+                    $NewObject['onPremisesExtensionAttributes'] = $OnPrem
                 } else {
                     $NewObject[$Property] = $Object.$Property
                 }

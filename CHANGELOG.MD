@@ -3,6 +3,7 @@
 
 ## Unreleased
 - Use Graph beta when requesting onPremisesExtensionAttributes (needed for some guest/extensionAttribute reads)
+- Handle onPremisesExtensionAttributes returned as dictionaries from Invoke-MgGraphRequest to keep extensionAttribute* values populated
 
 ### 0.2.1 - 2024.07.11
 - Improve `Connect-MgGraph` support
